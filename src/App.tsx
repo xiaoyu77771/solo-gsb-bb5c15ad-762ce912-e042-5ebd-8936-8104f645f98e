@@ -10,6 +10,7 @@ import { Simulator } from './components/Simulator';
 import { TraceView } from './components/TraceView';
 import DebugPanel from './components/DebugPanel';
 import { RegressionPanel } from './components/RegressionPanel';
+import { CoveragePanel } from './components/CoveragePanel';
 import { ShareCreateDialog } from './components/ShareCreateDialog';
 import { ShareUnlock } from './components/ShareUnlock';
 import {
@@ -237,6 +238,7 @@ export default function App() {
           )}
         </div>
       </main>
+      <CoveragePanel rules={rules} />
       <RegressionPanel rules={rules} />
       {sharing && (
         <ShareCreateDialog

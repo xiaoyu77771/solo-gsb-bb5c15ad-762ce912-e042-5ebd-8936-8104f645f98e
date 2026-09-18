@@ -146,7 +146,8 @@ button.danger:hover:not(:disabled) {
 }
 
 input,
-select {
+select,
+textarea {
   background: var(--panel-2);
   color: var(--text);
   border: 1px solid var(--border);
@@ -157,7 +158,8 @@ select {
 }
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   outline: none;
   border-color: var(--accent);
 }
@@ -931,4 +933,243 @@ input.invalid {
   border: 1px dashed var(--border);
   border-radius: 8px;
   padding: 8px 12px;
+}
+
+/* ---- 访问样本覆盖审计 ---- */
+
+.coverage-panel {
+  margin-top: 20px;
+}
+
+.cov-hint {
+  margin: 0 0 10px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.cov-input {
+  width: 100%;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.6;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.cov-input-meta {
+  margin-top: 6px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.cov-meta-warn {
+  color: var(--warn);
+}
+
+.cov-results {
+  margin-top: 10px;
+}
+
+.cov-summary {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 12px;
+}
+
+.cov-summary-item {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 3px 12px;
+  font-size: 12.5px;
+  background: var(--panel-2);
+}
+
+.cov-sum-warn {
+  border-color: rgba(224, 169, 62, 0.5);
+}
+
+.cov-sum-error {
+  border-color: rgba(229, 83, 75, 0.5);
+}
+
+.cov-bucket {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  background: var(--panel-2);
+}
+
+.cov-bucket-warn {
+  border-color: rgba(224, 169, 62, 0.5);
+}
+
+.cov-bucket-error {
+  border-color: rgba(229, 83, 75, 0.5);
+}
+
+.cov-bucket h4 {
+  margin: 0 0 6px;
+  font-size: 13px;
+}
+
+.cov-bucket ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cov-bucket li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cov-line-no {
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.cov-sample-url {
+  word-break: break-all;
+}
+
+.tag.cov-method {
+  background: rgba(91, 157, 255, 0.18);
+  color: var(--accent);
+  font-family: var(--mono);
+}
+
+.cov-reason {
+  color: var(--warn);
+  font-size: 12.5px;
+}
+
+.cov-rule {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.cov-rule.zero-hit {
+  opacity: 0.7;
+}
+
+.cov-rule.rule-gone {
+  border-style: dashed;
+  border-color: var(--error);
+}
+
+.cov-rule-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  user-select: none;
+  flex-wrap: wrap;
+}
+
+.cov-rule-head:hover {
+  background: rgba(91, 157, 255, 0.07);
+}
+
+.cov-caret {
+  color: var(--muted);
+  font-size: 11px;
+  width: 12px;
+}
+
+.cov-rule-no {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12.5px;
+}
+
+.cov-rule-name {
+  font-weight: 600;
+}
+
+.cov-rule-stats {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.cov-rule-stats strong {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.zero-hit .cov-rule-stats strong {
+  color: var(--muted);
+}
+
+.tag.tag-gone {
+  background: rgba(229, 83, 75, 0.18);
+  color: var(--error);
+}
+
+.tag.tag-off {
+  background: rgba(139, 152, 184, 0.18);
+  color: var(--muted);
+}
+
+.cov-rule-body {
+  border-top: 1px dashed var(--border);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cov-hit-sample {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 8px 10px;
+}
+
+.cov-hit-sample > header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.cov-hit-count {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.cov-hit-steps {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.cov-step-wrap.is-hit .step {
+  border-color: var(--accent);
+  border-left-color: var(--accent);
+}
+
+.cov-other-step {
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  color: var(--muted);
+  font-size: 12.5px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
