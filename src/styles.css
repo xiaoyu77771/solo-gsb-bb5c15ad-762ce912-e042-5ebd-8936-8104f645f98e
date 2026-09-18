@@ -59,6 +59,13 @@ code,
   align-items: start;
 }
 
+.left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
 @media (max-width: 960px) {
   .layout {
     grid-template-columns: 1fr;
@@ -931,4 +938,246 @@ input.invalid {
   border: 1px dashed var(--border);
   border-radius: 8px;
   padding: 8px 12px;
+}
+
+/* ---- 访问样本覆盖审计 ---- */
+
+.coverage-panel {
+  /* 与规则表同处左列，间隔由 left-col 的 gap 控制 */
+}
+
+.cov-input {
+  width: 100%;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font-family: var(--mono);
+  font-size: 12.5px;
+  line-height: 1.55;
+  resize: vertical;
+}
+
+.cov-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.cov-parse-info {
+  margin-top: 6px;
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.cov-parse-errors {
+  color: var(--error);
+}
+
+.cov-report {
+  margin-top: 10px;
+}
+
+.cov-summary-bad {
+  color: var(--error);
+}
+
+.cov-summary-warn {
+  color: var(--warn);
+}
+
+/* 规则统计行 */
+
+.cov-rule {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.cov-rule-zero {
+  border-style: dashed;
+  opacity: 0.85;
+}
+
+.cov-rule-disabled .cov-rule-name {
+  color: var(--muted);
+  text-decoration: line-through;
+}
+
+.cov-rule-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 12px;
+}
+
+.cov-rule-head:hover:not(:disabled) {
+  border-color: transparent;
+  background: rgba(91, 157, 255, 0.07);
+}
+
+.cov-caret {
+  color: var(--muted);
+  font-size: 11px;
+  width: 12px;
+  flex: none;
+}
+
+.cov-rule-order {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: 12px;
+  flex: none;
+}
+
+.cov-rule-name {
+  flex: 1;
+  min-width: 80px;
+  font-weight: 600;
+}
+
+.cov-tag-off {
+  background: rgba(139, 152, 184, 0.18);
+  color: var(--muted);
+}
+
+.cov-counts {
+  display: flex;
+  gap: 14px;
+  flex: none;
+}
+
+.cov-count {
+  font-size: 12.5px;
+  color: var(--muted);
+}
+
+.cov-count strong {
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 13px;
+}
+
+.cov-rule-zero .cov-count strong {
+  color: var(--muted);
+}
+
+.cov-rule-body {
+  border-top: 1px dashed var(--border);
+  padding: 10px 12px;
+}
+
+.cov-hit {
+  margin-bottom: 12px;
+}
+
+.cov-hit:last-child {
+  margin-bottom: 0;
+}
+
+.cov-hit-head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.cov-sample-ref {
+  font-family: var(--mono);
+  font-size: 12px;
+  word-break: break-all;
+  color: var(--text);
+}
+
+.cov-line-no {
+  display: inline-block;
+  color: var(--muted);
+  margin-right: 6px;
+  user-select: none;
+}
+
+.cov-hit-times {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* 问题样本分组 */
+
+.cov-group {
+  margin-top: 14px;
+}
+
+.cov-group h4 {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.cov-problem {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  overflow: hidden;
+}
+
+.cov-problem-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 8px 12px;
+}
+
+.cov-problem-head:hover:not(:disabled) {
+  border-color: transparent;
+  background: rgba(91, 157, 255, 0.07);
+}
+
+.cov-problem-head .cov-sample-ref {
+  flex: 1;
+  min-width: 0;
+}
+
+.cov-sample-trace {
+  border-top: 1px dashed var(--border);
+  padding: 10px 12px;
+}
+
+.cov-reason {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.tag.cov-status.status-invalid-input,
+.tag.cov-status.status-invalid-url,
+.tag.cov-status.status-invalid-target,
+.tag.cov-status.status-loop,
+.tag.cov-status.status-max-steps {
+  background: rgba(229, 83, 75, 0.18);
+  color: var(--error);
+}
+
+.tag.cov-status.status-stopped {
+  background: rgba(224, 169, 62, 0.18);
+  color: var(--warn);
+}
+
+.tag.cov-status.status-final,
+.tag.cov-status.status-redirect {
+  background: rgba(47, 191, 113, 0.18);
+  color: var(--ok);
 }

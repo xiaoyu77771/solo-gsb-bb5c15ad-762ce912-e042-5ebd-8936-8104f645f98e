@@ -10,6 +10,7 @@ import { Simulator } from './components/Simulator';
 import { TraceView } from './components/TraceView';
 import DebugPanel from './components/DebugPanel';
 import { RegressionPanel } from './components/RegressionPanel';
+import { CoveragePanel } from './components/CoveragePanel';
 import { ShareCreateDialog } from './components/ShareCreateDialog';
 import { ShareUnlock } from './components/ShareUnlock';
 import {
@@ -206,12 +207,15 @@ export default function App() {
         </p>
       </header>
       <main className="layout">
-        <RulesPanel
-          history={{ ...hist, undo, redo }}
-          onShare={() => setSharing(true)}
-          breakpoints={breakpoints}
-          onToggleBreakpoint={toggleBreakpoint}
-        />
+        <div className="left-col">
+          <RulesPanel
+            history={{ ...hist, undo, redo }}
+            onShare={() => setSharing(true)}
+            breakpoints={breakpoints}
+            onToggleBreakpoint={toggleBreakpoint}
+          />
+          <CoveragePanel rules={rules} />
+        </div>
         <div className="right-col">
           <Simulator
             method={method}
